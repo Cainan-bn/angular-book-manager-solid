@@ -5,10 +5,6 @@
 #  e Linux. Sem isso, o Git pode marcar arquivos inteiros como
 #  "modificados" apenas por diferença de CRLF vs LF, poluindo
 #  o histórico de commits.
-#
-#  Regra geral:
-#    text=auto  → Git normaliza automaticamente
-#    eol=lf     → força LF no repositório (padrão Unix/web)
 # =============================================================
 
 # Comportamento padrão: normaliza todos os arquivos de texto
@@ -48,7 +44,9 @@ LICENSE             text eol=lf
 *.sh                text eol=lf
 *.bash              text eol=lf
 *.zsh               text eol=lf
-*.bat               text eol=crlf   # Batch scripts precisam de CRLF no Windows
+
+# Batch scripts precisam de CRLF no Windows
+*.bat               text eol=crlf
 *.cmd               text eol=crlf
 *.ps1               text eol=crlf
 
@@ -59,7 +57,6 @@ LICENSE             text eol=lf
 *.gif               binary
 *.ico               binary
 *.webp              binary
-*.svg               binary
 *.woff              binary
 *.woff2             binary
 *.ttf               binary
