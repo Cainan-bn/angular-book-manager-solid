@@ -1,0 +1,42 @@
+{
+  "editoras": [
+    { "codEditora": 1, "nomeEditora": "Novatec" },
+    { "codEditora": 2, "nomeEditora": "Casa do Código" },
+    { "codEditora": 3, "nomeEditora": "O'Reilly" },
+    { "codEditora": 4, "nomeEditora": "Packt Publishing" }
+  ],
+  "livros": [
+    {
+      "codLivro": 1,
+      "titulo": "Clean Code",
+      "resumo": "Práticas para escrever código limpo e manutenível.",
+      "autores": ["Robert C. Martin"],
+      "codEditora": 1,
+      "anoPublicacao": 2008
+    },
+    {
+      "codLivro": 2,
+      "titulo": "The Pragmatic Programmer",
+      "resumo": "Guia prático de carreira e boas práticas de desenvolvimento.",
+      "autores": ["David Thomas", "Andrew Hunt"],
+      "codEditora": 3,
+      "anoPublicacao": 1999
+    },
+    {
+      "codLivro": 3,
+      "titulo": "Angular: Do zero à produção",
+      "resumo": "Guia completo do framework Angular moderno.",
+      "autores": ["Loiane Groner"],
+      "codEditora": 2,
+      "anoPublicacao": 2023
+    },
+    {
+      "codLivro": 4,
+      "titulo": "You Don't Know JS",
+      "resumo": "Série aprofundada sobre os fundamentos do JavaScript.",
+      "autores": ["Kyle Simpson"],
+      "codEditora": 3,
+      "anoPublicacao": 2015
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+<div class="container py-4" style="max-width: 720px;">
+
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#" (click)="cancelar(); $event.preventDefault()" class="text-decoration-none">
+          Acervo
+        </a>
+      </li>
+      
+      <li class="breadcrumb-item active" aria-current="page">
+        {{ modoEdicao ? 'Editar Livro' : 'Novo Livro' }}
+      </li>
+    </ol>
+  </nav>
+
+  <div class="card shadow-sm border-0">
+    
+    <div class="card-header py-3"
+         [ngClass]="modoEdicao ? 'bg-warning text-dark' : 'bg-primary text-white'">
+      <h2 class="h5 mb-0 fw-semibold">
+        <i class="me-2" [ngClass]="modoEdicao ? 'bi bi-pencil-square' : 'bi bi-journal-plus'"></i>
+        {{ modoEdicao ? 'Editar Livro #' + codLivroEditando : 'Cadastrar Novo Livro' }}
+      </h2>
+    </div>
+
+    <div class="card-body p-4">
+
+      <!-- Alerta de erro -->
+      <div *ngIf="mensagemErro"
+           class="alert alert-danger alert-dismissible fade show"
+           role="alert">
+        {{ mensagemErro }}
+        <button type="button" class="btn-close" (click)="limparErro()" aria-label="Fechar"></button>
+      </div>
+
+      <form #formLivro="ngForm" (ngSubmit)="salvarLivro()" novalidate>
+
+        <!-- TÍTULO -->
+        <div class="mb-3">
+          <label for="titulo" class="form-label fw-semibold">
+            Título <span class="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            id="titulo"
+            name="titulo"
+            class="form-control"
+            placeholder="Ex: Clean Code"
+            [(ngModel)]="livroForm.titulo"
+            required
+            #tituloInput="ngModel">
+          <div *ngIf="tituloInput.invalid && tituloInput.touched"
+               class="text-danger small mt-1">
+            O título é obrigatório.
+          </div>
+        </div>
+
+        <!-- RESUMO -->
+        <div class="mb-3">
+          <label for="resumo" class="form-label fw-semibold">Resumo</label>
+          <textarea
+            id="resumo"
+            name="resumo"
+            class="form-control"
+            rows="3"
+            placeholder="Breve descrição do conteúdo..."
+            [(ngModel)]="livroForm.resumo">
+          </textarea>
+        </div>
+
+        <!-- AUTORES -->
+        <div class="mb-3">
+          <label for="autores" class="form-label fw-semibold">
+            Autores <span class="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            id="autores"
+            name="autores"
+            class="form-control"
+            placeholder="Ex: Robert C. Martin, Kent Beck"
+            [(ngModel)]="autoresTexto">
+          <div class="form-text">Para múltiplos autores, separe os nomes por vírgula.</div>
+        </div>
+
+        <!-- EDITORA + ANO -->
+        <div class="row g-3 mb-4">
+          <div class="col-md-7">
+            <label for="editora" class="form-label fw-semibold">
+              Editora <span class="text-danger">*</span>
+            </label>
+            <select
+              id="editora"
+              name="codEditora"
+              class="form-select"
+              [(ngModel)]="livroForm.codEditora">
+              <option [value]="0" disabled>— Selecione uma editora —</option>
+              <option *ngFor="let editora of editoras" [value]="editora.codEditora">
+                {{ editora.nomeEditora }}
+              </option>
+            </select>
+          </div>
+
+          <div class="col-md-5">
+            <label for="anoPublicacao" class="form-label fw-semibold">Ano de Publicação</label>
+            <input
+              type="number"
+              id="anoPublicacao"
+              name="anoPublicacao"
+              class="form-control"
+              min="1900"
+              max="2100"
+              [(ngModel)]="livroForm.anoPublicacao">
+          </div>
+        </div>
+
+        <!-- AÇÕES -->
+        <div class="d-flex gap-2 justify-content-end border-top pt-3">
+          <button type="button" class="btn btn-outline-secondary" (click)="cancelar()">
+            Cancelar
+          </button>
+          
+          <button
+            type="submit"
+            class="btn px-4"
+            [ngClass]="modoEdicao ? 'btn-warning' : 'btn-primary'">
+            <i class="me-2"
+               [ngClass]="modoEdicao ? 'bi bi-floppy2' : 'bi bi-floppy'"></i>
+            {{ modoEdicao ? 'Salvar Alterações' : 'Cadastrar Livro' }}
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,114 @@
+<div
+  *ngIf="visivel"
+  class="qv-backdrop"
+  [class.qv-backdrop--visivel]="animando"
+  (click)="onBackdropClick($event)"
+  role="dialog"
+  aria-modal="true"
+  [attr.aria-label]="livro ? 'Detalhes de ' + livro.titulo : 'Carregando'">
+
+  <div
+    class="qv-card"
+    [class.qv-card--visivel]="animando"
+    role="document">
+
+    <!-- CABEÇALHO -->
+    <div class="qv-header">
+      <div class="qv-header__badge">Quick View</div>
+      <button
+        class="qv-close"
+        (click)="fechar()"
+        aria-label="Fechar visualização rápida"
+        title="Fechar (Esc)">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+
+
+    <div *ngIf="livro" class="qv-body">
+
+      
+      <div class="qv-capa">
+        <span class="qv-capa__inicial">{{ livro.titulo.charAt(0) }}</span>
+        <div class="qv-capa__ano">{{ livro.anoPublicacao }}</div>
+      </div>
+
+     
+      <div class="qv-info">
+
+        <h2 class="qv-titulo">{{ livro.titulo }}</h2>
+
+        <div class="qv-meta">
+          
+          <div class="qv-meta__item">
+            <i class="bi bi-person me-1"></i>
+            <span>
+              
+              {{ livro.autores.slice(0, 2).join(', ') }}
+              <span *ngIf="livro.autores.length > 2" class="text-muted">
+                + {{ livro.autores.length - 2 }} mais
+              </span>
+            </span>
+          </div>
+
+          
+          <div class="qv-meta__item">
+            <i class="bi bi-building me-1"></i>
+            <span class="badge bg-secondary">{{ getNomeEditora(livro.codEditora) }}</span>
+          </div>
+
+          <!-- Ano -->
+          <div class="qv-meta__item">
+            <i class="bi bi-calendar3 me-1"></i>
+            <span>{{ livro.anoPublicacao }}</span>
+          </div>
+
+          <!-- Código interno -->
+          <div class="qv-meta__item text-muted small">
+            <i class="bi bi-hash me-1"></i>
+            <span>Cód. {{ livro.codLivro }}</span>
+          </div>
+        </div>
+
+       
+        <hr class="qv-divider">
+
+        
+        <div class="qv-secao">
+          <h3 class="qv-secao__titulo">
+            <i class="bi bi-text-paragraph me-1"></i>Resumo
+          </h3>
+          <p class="qv-resumo">
+            {{ livro.resumo || 'Nenhum resumo disponível para esta obra.' }}
+          </p>
+        </div>
+
+        
+        <div *ngIf="livro.autores.length > 1" class="qv-secao">
+          <h3 class="qv-secao__titulo">
+            <i class="bi bi-people me-1"></i>Autores
+          </h3>
+          <div class="qv-autores">
+            <span
+              *ngFor="let autor of livro.autores"
+              class="qv-autor-tag">
+              {{ autor }}
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    
+    <div *ngIf="livro" class="qv-footer">
+      <button class="btn btn-outline-secondary btn-sm" (click)="fechar()">
+        <i class="bi bi-x me-1"></i>Fechar
+      </button>
+      <span class="text-muted small">
+        <i class="bi bi-keyboard me-1"></i>Pressione <kbd>Esc</kbd> para fechar
+      </span>
+    </div>
+
+  </div>
+</div>

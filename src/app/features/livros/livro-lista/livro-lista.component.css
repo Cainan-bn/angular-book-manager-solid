@@ -1,0 +1,35 @@
+/* Animação suave na entrada dos alertas */
+.alert {
+  animation: fadeInDown 0.3s ease-in-out;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Linha da tabela clicável */
+tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+/* Bootstrap não tem .cursor-pointer por padrão */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Mini capa na listagem */
+.livro-mini-capa {
+  flex-shrink: 0;
+  width: 36px;
+  height: 50px;
+  background: linear-gradient(135deg, #0d6efd, #6610f2);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  box-shadow: 2px 3px 8px rgba(13, 110, 253, 0.25);
+}

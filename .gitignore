@@ -1,0 +1,153 @@
+#  .gitignore — Catálogo de Livros (Angular 17+)
+
+# DEPENDÊNCIAS — nunca versionar o node_modules
+# Cada desenvolvedor roda `npm install` para regenerar.
+# A pasta pode ter centenas de MB; o package-lock.json
+# já garante reprodutibilidade exata das versões.
+# ─────────────────────────────────────────────
+node_modules/
+
+
+# ─────────────────────────────────────────────
+# BUILD — artefatos gerados pelo `ng build`
+# Não faz sentido versionar arquivos compilados;
+# eles são regenerados a partir do código-fonte.
+# ─────────────────────────────────────────────
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+
+# ─────────────────────────────────────────────
+# CACHE DO ANGULAR CLI
+# Pasta de cache interna criada pelo Angular CLI
+# para acelerar builds incrementais.
+# Específica de cada máquina — não deve ser compartilhada.
+# ─────────────────────────────────────────────
+.angular/
+
+
+# ─────────────────────────────────────────────
+# TESTES
+# ─────────────────────────────────────────────
+/coverage
+
+
+# ─────────────────────────────────────────────
+# SISTEMA OPERACIONAL
+# Arquivos de metadados criados automaticamente
+# pelo Windows Explorer, macOS Finder ou Linux.
+# ─────────────────────────────────────────────
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+
+# ─────────────────────────────────────────────
+# EDITORES E IDEs
+# Configurações locais de cada desenvolvedor.
+# As preferências pessoais não devem ser impostas
+# ao restante do time.
+# ─────────────────────────────────────────────
+
+# VS Code — configurações pessoais do workspace
+# (exceção: .vscode/extensions.json pode ser versionado
+#  se quiser sugerir extensões ao time)
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# JetBrains (WebStorm, IntelliJ)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim / Neovim
+*.swp
+*.swo
+*.swn
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+Session.vim
+.netrwhist
+
+
+# ─────────────────────────────────────────────
+# VARIÁVEIS DE AMBIENTE E SEGREDOS
+# ─────────────────────────────────────────────
+.env
+.env.local
+.env.development
+.env.staging
+.env.production
+*.pem
+*.key
+*.p12
+*.pfx
+
+
+# ─────────────────────────────────────────────
+# LOGS
+# ─────────────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+
+# ─────────────────────────────────────────────
+# GERENCIADORES DE PACOTES ALTERNATIVOS
+# ─────────────────────────────────────────────
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# pnpm
+.pnpm-store/
+
+
+/cd
+/ng
+/npm
+/catalogo-livros@*
+
+
+# ─────────────────────────────────────────────
+# ARQUIVOS TEMPORÁRIOS E MISCELÂNEA
+# ─────────────────────────────────────────────
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+.cache/
+.sass-cache/
+connect.lock
+typings/
